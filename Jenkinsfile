@@ -1,5 +1,10 @@
 pipeline {
+environment {
+    dockerimagename = "adenli/mvn1"
+    dockerImage = ""
+  }
     agent any
+
     tools{
         maven 'maven'
     }
@@ -10,6 +15,18 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage('Pushing Image') {
+              environment {
+                       registryCredential = 'dockerhublogin'
+                   }
+              steps{
+                script {
+                  docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+                    dockerImage.push("latest")
+                  }
+                }
+              }
+            }
 //         stage('Build docker image'){
 //             steps{
 //                 script{
