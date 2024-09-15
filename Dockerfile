@@ -2,7 +2,7 @@ FROM openjdk:17-jdk-alpine
 EXPOSE 8081
 
 ADD target/mvn1.jar mvn1.jar
-ENTRYPOINT ["java","-jar","/mvn-app.jar"]
+ENTRYPOINT ["java","-jar","/mvn1.jar"]
 
 #FROM maven
 #WORKDIR /app
