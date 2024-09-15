@@ -15,6 +15,13 @@ environment {
                 sh 'mvn clean install'
             }
         }
+        stage('Build image') {
+              steps{
+                script {
+                  dockerImage = docker.build dockerimagename
+                }
+              }
+            }
         stage('Pushing Image') {
               environment {
                        registryCredential = 'dockerhublogin'
