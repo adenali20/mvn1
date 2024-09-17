@@ -12,9 +12,7 @@ class TestServiceTest {
     @InjectMocks
     TestService testService;
 
-    @Test
-    void contextLoads() {
-    }
+
 
     @Test
     public void whenPalindromeThenTrue() {
