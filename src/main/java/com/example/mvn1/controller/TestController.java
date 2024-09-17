@@ -13,8 +13,7 @@ public class TestController {
     @GetMapping("/test/{str}")
 
     public String test(@PathVariable String str) {
-        if(testService.isPalindrome(str))
-            return "is palindrome";
-        return "not palindrome";
+
+        return "palindrome status : "+testService.isPalindrome(str);
     }
 }
