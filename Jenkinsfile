@@ -9,17 +9,13 @@ environment {
         maven 'maven'
     }
     stages{
-        stage('Git Checkout'){
+        stage('Git Checkout & Compile'){
             steps{
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'dockerhublogin', url: 'https://github.com/adenali20/mvn1.git']])
-
-            }
-        }
-        stage("Compile"){
-            steps{
                 sh "mvn clean compile"
             }
         }
+
 
         stage('Code Analysis') {
             environment {
@@ -52,14 +48,14 @@ environment {
             }
         }
 
-        stage('Build image') {
+        stage('Build Docker image') {
               steps{
                 script {
                   dockerImage = docker.build dockerimagename
                 }
               }
             }
-        stage('Pushing Image') {
+        stage('Push image to Hub') {
               environment {
                        registryCredential = 'dockerhublogin'
                    }
