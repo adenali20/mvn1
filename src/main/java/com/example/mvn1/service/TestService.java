@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestService {
     public boolean isPalindrome(String inputString) {
-        String reversedString = "";
         StringBuilder sb=new StringBuilder(inputString);
 
         return sb.reverse().toString().equalsIgnoreCase(inputString);

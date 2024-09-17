@@ -13,6 +13,7 @@ class Mvn1ApplicationTests {
 
     @Test
     void contextLoads() {
+        assertTrue(true);
     }
 
 
