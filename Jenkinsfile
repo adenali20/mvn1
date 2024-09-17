@@ -28,7 +28,7 @@ environment {
                             -Dsonar.projectKey=syl_test \
                             -Dsonar.projectName=syl_test \
                             -Dsonar.projectVersion=1.0 \
-                            -Dsonar.java.binaries=. \
+                            -Dsonar.java.binaries=target \
                             -Dsonar.sources=."
                     }
                 }
