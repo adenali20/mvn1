@@ -29,11 +29,11 @@ environment {
                             -Dsonar.projectName=syl_test \
                             -Dsonar.projectVersion=1.0 \
                             -Dsonar.java.binaries=target/classes \
-                            -Dsonar.sourceEncoding=UTF-8
-                            -Dsonar.dynamicAnalysis=reuseReports
-                            -Dsonar.junit.reportsPath=target/surefire-reports
-                            -Dsonar.java.coveragePlugin=jacoco
-                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xm
+                            -Dsonar.sourceEncoding=UTF-8 \
+                            -Dsonar.dynamicAnalysis=reuseReports \
+                            -Dsonar.junit.reportsPath=target/surefire-reports \
+                            -Dsonar.java.coveragePlugin=jacoco \
+                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
                             -Dsonar.sources=."
                     }
                 }
