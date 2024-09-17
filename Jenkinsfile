@@ -9,12 +9,18 @@ environment {
         maven 'maven'
     }
     stages{
-        stage('Build Maven'){
+        stage('Git Checkout'){
             steps{
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'dockerhublogin', url: 'https://github.com/adenali20/mvn1.git']])
-                sh 'mvn clean install'
+
             }
         }
+        stage("Compile"){
+            steps{
+                sh "mvn clean compile"
+            }
+        }
+
         stage('Code Analysis') {
             environment {
                 scannerHome = tool 'Sonar'
@@ -26,12 +32,26 @@ environment {
                             -Dsonar.projectKey=syl_test \
                             -Dsonar.projectName=syl_test \
                             -Dsonar.projectVersion=1.0 \
+                            -Dsonar.java.binaries=. \
                             -Dsonar.sources=."
                     }
                 }
                 echo "code scanning completed..."
             }
         }
+        //   stage("OWASP Dependency Check"){
+        //     steps{
+        //         dependencyCheck additionalArguments: '--scan ./ --format HTML ', odcInstallation: 'DP'
+        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+        //     }
+        // }
+
+         stage("Build"){
+            steps{
+                sh " mvn clean install"
+            }
+        }
+
         stage('Build image') {
               steps{
                 script {
