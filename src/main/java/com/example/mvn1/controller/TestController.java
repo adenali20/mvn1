@@ -2,10 +2,7 @@ package com.example.mvn1.controller;
 
 import com.example.mvn1.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +15,9 @@ public class TestController {
     @Autowired
     TestService testService;
 
+    List<String> list=new ArrayList<>();
+
+
     @GetMapping("/test/{str}")
     public Map<String,Boolean> isPalindrome(@PathVariable String str) {
 
@@ -27,12 +27,23 @@ public class TestController {
     }
 
     @GetMapping("/users")
-    public List<String> isPalindrome() {
+    public List<String> getUsers() {
 
-       List<String> list=new ArrayList<>();
-       list.add("aden");
-       list.add("mohamed");
-       list.add("ali");
+        return list;
+    }
+
+    @GetMapping("/deleteUsers")
+    public List<String> deleteUsers() {
+        list.clear();
+        return list;
+    }
+
+
+    @PostMapping("/users")
+    public List<String> postUser(@RequestBody String user) {
+
+
+        list.add(user);
         return list;
     }
 }
