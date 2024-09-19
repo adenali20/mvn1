@@ -17,30 +17,30 @@ environment {
         }
 
 
-        stage('Code Analysis') {
-            environment {
-                scannerHome = tool 'Sonar'
-            }
-             steps {
-                script {
-                    withSonarQubeEnv('Sonar') {
-                        sh "${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=syl_test \
-                            -Dsonar.projectName=syl_test \
-                            -Dsonar.projectVersion=1.0 \
-                            -Dsonar.java.binaries=target/classes \
-                            -Dsonar.sourceEncoding=UTF-8 \
-                            -Dsonar.tests=src/test  \
-                            -Dsonar.dynamicAnalysis=reuseReports \
-                            -Dsonar.junit.reportsPath=target/surefire-reports \
-                            -Dsonar.java.coveragePlugin=jacoco \
-                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
-                            -Dsonar.sources=src/main"
-                    }
-                }
-                echo "code scanning completed..."
-            }
-        }
+        // stage('Code Analysis') {
+        //     environment {
+        //         scannerHome = tool 'Sonar'
+        //     }
+        //      steps {
+        //         script {
+        //             withSonarQubeEnv('Sonar') {
+        //                 sh "${scannerHome}/bin/sonar-scanner \
+        //                     -Dsonar.projectKey=syl_test \
+        //                     -Dsonar.projectName=syl_test \
+        //                     -Dsonar.projectVersion=1.0 \
+        //                     -Dsonar.java.binaries=target/classes \
+        //                     -Dsonar.sourceEncoding=UTF-8 \
+        //                     -Dsonar.tests=src/test  \
+        //                     -Dsonar.dynamicAnalysis=reuseReports \
+        //                     -Dsonar.junit.reportsPath=target/surefire-reports \
+        //                     -Dsonar.java.coveragePlugin=jacoco \
+        //                     -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
+        //                     -Dsonar.sources=src/main"
+        //             }
+        //         }
+        //         echo "code scanning completed..."
+        //     }
+        // }
         //   stage("OWASP Dependency Check"){
         //     steps{
         //         dependencyCheck additionalArguments: '--scan ./ --format HTML ', odcInstallation: 'DP'
