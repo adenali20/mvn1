@@ -1,0 +1,40 @@
+
+   
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mvn1-deployment
+  labels:
+    app: mvn1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mvn1
+  template:
+    metadata:
+      labels:
+        app: mvn1
+    spec:
+      containers:
+      - name: mvn1
+        image: adenli/mvn1:latest
+        ports:
+        - containerPort: 8081
+        
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mvn1-srv
+spec:
+  selector:
+    app: mvn1
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8081
+    targetPort: 8081
+    nodePort: 30005
