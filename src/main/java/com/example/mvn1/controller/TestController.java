@@ -1,5 +1,6 @@
 package com.example.mvn1.controller;
 
+import com.example.mvn1.entity.User;
 import com.example.mvn1.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 //@CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -15,7 +17,7 @@ public class TestController {
     @Autowired
     TestService testService;
 
-    List<String> list=new ArrayList<>();
+
 
 
     @GetMapping("/test/{str}")
@@ -29,13 +31,13 @@ public class TestController {
     @GetMapping("/users")
     public List<String> getUsers() {
 
-        return list;
+        return testService.getAllUsers().stream().map(e->e.getName()).collect(Collectors.toUnmodifiableList());
     }
 
     @GetMapping("/deleteUsers")
     public List<String> deleteUsers() {
-        list.clear();
-        return list;
+//        list.clear();
+        return new ArrayList<>();
     }
 
 
@@ -43,7 +45,9 @@ public class TestController {
     public List<String> postUser(@RequestBody String user) {
 
 
-        list.add(user);
-        return list;
+        User user1=new User();
+        user1.setName(user);
+        testService.saveUser(user1);
+        return testService.getAllUsers().stream().map(e->e.getName()).collect(Collectors.toList());
     }
 }
