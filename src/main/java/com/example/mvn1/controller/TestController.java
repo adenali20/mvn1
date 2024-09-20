@@ -12,7 +12,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 //@CrossOrigin(origins = "http://localhost:3000")
+
 @RestController
+@RequestMapping("/api/users")
 public class TestController {
     @Autowired
     TestService testService;
@@ -28,7 +30,7 @@ public class TestController {
         return res;
     }
 
-    @GetMapping("/users")
+    @GetMapping("/")
     public List<String> getUsers() {
 
         return testService.getAllUsers().stream().map(e->e.getName()).collect(Collectors.toUnmodifiableList());
@@ -41,7 +43,7 @@ public class TestController {
     }
 
 
-    @PostMapping("/users")
+    @PostMapping("/")
     public List<String> postUser(@RequestBody String user) {
 
 
