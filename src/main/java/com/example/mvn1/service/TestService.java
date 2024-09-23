@@ -26,6 +26,6 @@ public class TestService {
     public List<User> getAllUsers() {
         List<User> users=userRepository.findAll();
         Collections.reverse(users);
-        return userRepository.findAll();
+        return users;
     }
 }
