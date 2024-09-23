@@ -50,6 +50,6 @@ public class TestController {
         User user1=new User();
         user1.setName(user);
         testService.saveUser(user1);
-        return testService.getAllUsers().stream().map(e->e.getName()).collect(Collectors.toList());
+        return testService.getAllUsers().stream().map(e->e.getId()+". "+e.getName()).collect(Collectors.toList());
     }
 }
