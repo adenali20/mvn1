@@ -5,6 +5,7 @@ import com.example.mvn1.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -23,6 +24,8 @@ public class TestService {
     }
 
     public List<User> getAllUsers() {
+        List<User> users=userRepository.findAll();
+        Collections.reverse(users);
         return userRepository.findAll();
     }
 }
