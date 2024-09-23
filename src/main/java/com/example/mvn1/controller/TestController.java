@@ -38,7 +38,7 @@ public class TestController {
 
     @GetMapping("/deleteUsers")
     public List<String> deleteUsers() {
-//        list.clear();
+        System.out.println("deleting is not done");
         return new ArrayList<>();
     }
 
