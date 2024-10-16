@@ -34,7 +34,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/users")
+@RequestMapping("/api/mvn1/users")
 public class UserController{
 
     @Autowired
@@ -44,7 +44,7 @@ public class UserController{
 //    private final AuthenticationManager authenticationManager;
 //    private final Environment env;
 
-    @GetMapping("/salary")
+    @PostMapping("/salary")
     public String getSalary() {
 //        userRepository.save(user);
 //        User user = new User();

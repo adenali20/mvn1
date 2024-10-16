@@ -40,6 +40,7 @@ public class JWTTokenGeneratorFilter extends OncePerRequestFilter {
                 SecretKey secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
                 String jwt = Jwts.builder().issuer("mvn1").subject("JWT Token")
                         .claim("username", authentication.getName())
+                        .claim("iden","zyx")
                         .claim("authorities", authentication.getAuthorities().stream().map(
                                 GrantedAuthority::getAuthority).collect(Collectors.joining(",")))
                         .issuedAt(new Date())
