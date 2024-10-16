@@ -49,8 +49,8 @@ public class AppConfig {
                 .csrf(hcsrf -> hcsrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
 //                                .requestMatchers("api/users/salary").hasRole("ADMIN")
-                                .requestMatchers("/api/users/signup").permitAll()
-                                .requestMatchers("/api/users/login").permitAll()
+                                .requestMatchers("/api/mvn1/users/signup").permitAll()
+                                .requestMatchers("/api/mvn1/users/login").permitAll()
                 .anyRequest().authenticated()
 
                 )
